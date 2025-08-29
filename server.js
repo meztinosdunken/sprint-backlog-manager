@@ -5,8 +5,8 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
-app.use(express.json());
+app.use(cors()); // Enable CORS for all routes
+app.use(express.json()); // Parse incoming JSON requests
 
 // Connect to MongoDB
 mongoose.connect('mongodb://localhost:27017/sprint-backlog', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -15,10 +15,10 @@ mongoose.connect('mongodb://localhost:27017/sprint-backlog', { useNewUrlParser: 
 
 // Sample route to test API
 app.get('/', (req, res) => {
-  res.send('API is running...');
+  res.send('API is running...'); // Response for root route
 });
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`); // Log the server start
 });
