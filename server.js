@@ -9,6 +9,8 @@ app.use(cors()); // Enable CORS for all routes
 app.use(express.json()); // Parse incoming JSON requests
 
 // Connect to MongoDB
+// useNewUrlParser: true allows for parsing connection strings more reliably
+// useUnifiedTopology: true enables the new server discovery and monitoring engine
 mongoose.connect('mongodb://localhost:27017/sprint-backlog', { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected!'))
   .catch(err => console.error('MongoDB connection error:', err)); // Improved error logging
