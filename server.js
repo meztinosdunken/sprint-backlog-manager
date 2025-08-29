@@ -20,6 +20,12 @@ app.get('/', (req, res) => {
   res.send('API is running...'); // Response for root route
 });
 
+// Error handling middleware
+app.use((err, req, res, next) => {
+  console.error(err.stack); // Log the error stack
+  res.status(500).send('Something broke!'); // Send a generic error response
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`); // Log the server start
